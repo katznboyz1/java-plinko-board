@@ -163,6 +163,10 @@ class PlinkoBoard {
         output += bar();
 
         //print the board
+        //the reason that the board is printed all at once is to avoid IO bottlenecks. this program initially printed the board character by
+        //character using System.out.print, but that was slow, and it took about half a second to print the board. I realized that since this
+        //is an IO speed bottleneck, then I can mitigate it by printing the entire board at once, thus removing the bottleneck of individually
+        //printing multiple times. this fix worked, and its now much faster when printing.
         System.out.println(output);
     }
 }
