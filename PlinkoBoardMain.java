@@ -42,7 +42,7 @@ class PlinkoBoardMain {
             plinkoBoard.print();
 
             //sleep for x milliseconds
-            try {Thread.sleep(500);} catch (Exception e) {}
+            try {Thread.sleep(250);} catch (Exception e) {}
         }
 
         //get the x coordinate of the circle
