@@ -4,11 +4,27 @@ class PlinkoBoardMain {
     //the main method
     public static void main(String[] args) {
 
-        //the size of the plinko board
-        final int[] plinkoBoardSize = {40, 40}; 
+        //try statement (if it fails then the user gave incorrect arguments)
+        try {
+
+            //validate the inputs by converting them from strings to integers
+            Integer.parseInt(args[0]);
+            Integer.parseInt(args[1]);
+            Integer.parseInt(args[2]);
+        
+        //the user gave incorrect arguments
+        } catch (Exception e) {
+
+            //tell the user that there is an issue
+            System.out.println("There was an error processing your input.");
+            System.out.println("The program should be run by doing \"java PlinkoBoardMain [width] [height] [ball_starting_x_coordinate]\"");
+
+            //exit the program with a non 0 exit code to indicate a failure
+            System.exit(1);
+        }
 
         //create a new plinko board
-        PlinkoBoard plinkoBoard = new PlinkoBoard(plinkoBoardSize[0], plinkoBoardSize[1], plinkoBoardSize[0] / 2);
+        PlinkoBoard plinkoBoard = new PlinkoBoard(Integer.parseInt(args[0]), Integer.parseInt(args[1]), Integer.parseInt(args[2]));
 
         //clear the screen
         plinkoBoard.clearScreen();
