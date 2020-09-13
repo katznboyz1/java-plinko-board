@@ -68,12 +68,20 @@ class PlinkoBoard {
         }
     }
 
-    //a function to print a bar, which could be used as the top or bottom of the board
-    void printBar() {
+    //a function to generate a bar of sufficient width to pad the board
+    String bar() {
+        
+        //the bar
+        String bar = "";
 
-        //print the bar
-        for (int i = 0; i < plinkoBoardSize[0] + 2; i++) {System.out.print("\u2588");}
-        System.out.print("\n");
+        //generate the bar
+        for (int i = 0; i < plinkoBoardSize[0] + 2; i++) {bar += "\u2588";}
+
+        //add the new line character
+        bar += "\n";
+        
+        //return the bar
+        return bar;
     }
 
     //a function to advance the boards timeline by one step
@@ -128,14 +136,14 @@ class PlinkoBoard {
     //the method to print the board
     void print() {
 
-        //print the top of the board
-        printBar();
+        //the output that will be printed
+        String output = bar();
 
         //loop through each row in the board
         for (int row = 0; row < plinkoBoardArray.length; row++) {
 
-            //print the side of the row (using full block character)
-            System.out.print("\u2588");
+            //add the side of the row (using the full block character)
+            output += "\u2588";
             
             //loop through each column in the row
             for (int column = 0; column < plinkoBoardArray[row].length; column++) {
@@ -143,15 +151,18 @@ class PlinkoBoard {
                 //the character that will be printed
                 char currentCoordinatePrintValue = ((row == plinkoBoardCircleCoordinates[1]) && (column == plinkoBoardCircleCoordinates[0] - 1)) ? 'O' : plinkoBoardArray[row][column];
 
-                //print the column
-                System.out.print(currentCoordinatePrintValue);
+                //add the column
+                output += Character.toString(currentCoordinatePrintValue);
             }
 
-            //print the other side of the row make a new line
-            System.out.print("\u2588\n");
+            //add the other side of the row and a new line character
+            output += "\u2588\n";
         }
 
-        //print out the bottom of the board
-        printBar();
+        //add the bottom of the board
+        output += bar();
+
+        //print the board
+        System.out.println(output);
     }
 }
