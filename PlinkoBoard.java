@@ -92,11 +92,21 @@ class PlinkoBoard {
         } else {
 
             //check if the circle is touching an obstacle
-            if (plinkoBoardArray[plinkoBoardCircleCoordinates[1]][plinkoBoardCircleCoordinates[0]] != ' ') {
-                
-                //decide whether the circle will move left or right 
-                //generate a number between 0 and 1, if it is , move to the left, if it is 1, move to the right
-                plinkoBoardCircleCoordinates[0] += randomNumberGenerator.nextInt(2) == 0 ? -1 : 1;
+            //first two conditions are to prevent out of bounds errors
+            if (!(plinkoBoardCircleCoordinates[0] <= 0) && !(plinkoBoardCircleCoordinates[0] > plinkoBoardSize[0])) {
+
+                //this has to be nested because otherwise it will error out if the coordinates are out of bounds, so the first statement
+                //checks that they are not out of bounds, then this one checks what the coordinate value is, that way it prevents out of
+                //bounds errors
+
+                System.out.println(plinkoBoardCircleCoordinates[1]);
+                System.out.println(plinkoBoardCircleCoordinates[0]);
+
+                if (plinkoBoardArray[plinkoBoardCircleCoordinates[1]][plinkoBoardCircleCoordinates[0] - 1] != ' ') {
+                    //decide whether the circle will move left or right 
+                    //generate a number between 0 and 1, if it is , move to the left, if it is 1, move to the right
+                    plinkoBoardCircleCoordinates[0] += randomNumberGenerator.nextInt(2) == 0 ? -1 : 1;
+                }
             }
 
             //check that the circle isnt touching/outside of the boards bounds
@@ -134,7 +144,7 @@ class PlinkoBoard {
             for (int column = 0; column < plinkoBoardArray[row].length; column++) {
 
                 //the character that will be printed
-                char currentCoordinatePrintValue = ((row == plinkoBoardCircleCoordinates[1]) && (column == plinkoBoardCircleCoordinates[0])) ? 'O' : plinkoBoardArray[row][column];
+                char currentCoordinatePrintValue = ((row == plinkoBoardCircleCoordinates[1]) && (column == plinkoBoardCircleCoordinates[0] - 1)) ? 'O' : plinkoBoardArray[row][column];
 
                 //print the column
                 System.out.print(currentCoordinatePrintValue);
