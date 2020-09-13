@@ -99,9 +99,6 @@ class PlinkoBoard {
                 //checks that they are not out of bounds, then this one checks what the coordinate value is, that way it prevents out of
                 //bounds errors
 
-                System.out.println(plinkoBoardCircleCoordinates[1]);
-                System.out.println(plinkoBoardCircleCoordinates[0]);
-
                 if (plinkoBoardArray[plinkoBoardCircleCoordinates[1]][plinkoBoardCircleCoordinates[0] - 1] != ' ') {
                     //decide whether the circle will move left or right 
                     //generate a number between 0 and 1, if it is , move to the left, if it is 1, move to the right
