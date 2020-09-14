@@ -72,16 +72,16 @@ class PlinkoBoard {
     String bar() {
         
         //the bar
-        String bar = "";
+        String returnValue = "";
 
         //generate the bar
-        for (int i = 0; i < plinkoBoardSize[0] + 2; i++) {bar += "\u2588";}
+        for (int i = 0; i < plinkoBoardSize[0] + 2; i++) {returnValue += "\u2588";}
 
         //add the new line character
-        bar += "\n";
+        returnValue += "\n";
         
         //return the bar
-        return bar;
+        return returnValue;
     }
 
     //a function to advance the boards timeline by one step
