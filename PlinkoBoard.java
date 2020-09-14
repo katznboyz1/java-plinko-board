@@ -8,7 +8,7 @@ class PlinkoBoard {
     private char[][] plinkoBoardArray;
 
     //the size of the board
-    private int[] plinkoBoardSize = new int[2];
+    final private int[] plinkoBoardSize = new int[2];
 
     //the starting starting position
     private int[] plinkoBoardCircleCoordinates = new int[2];
